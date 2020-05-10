@@ -18,7 +18,7 @@ or manually using this URL:
 
 # Other recommendations for M3 printers
 ## octoprint update
-    as of 5/10/20 M3's are still shipped with 3.1.6; I Recommend at minimum octoprint 3.1.12 to support: octofarm for managing multiple printers, and creating backups
+as of 5/10/20 M3's are still shipped with 3.1.6; I Recommend at minimum octoprint 3.1.12 to support: octofarm for managing multiple printers, and creating backups
 ## change hostname
 The default hostname will be octopi If you only have 1 system on your network, this will probably be fine. Some users will have multiple systems and this will cause a problem with networking.
 
@@ -36,6 +36,7 @@ Reboot, using sudo reboot
 ## Octoprint > Settings Dialog > GCODE scripts
 modified to support filament change mid print and other preferences
 ### before print starts
+```
 M300 S110 P100
 M300 S130 P100
 M300 S146 P100
@@ -53,8 +54,9 @@ M104 S250 T0; set hot end temperature
 ;M109 S250 T0; wait for hot end temperature
 
 G211 S1 ; turn on software endstops
-
+```
 ### after print job completes
+```
 M300 S185 P500
 M300 S138 P500
 M300 S185 P500
@@ -63,8 +65,9 @@ M300 S277 P500
 M300 S246 P250
 M300 S233 P250
 M300 S246 P750
-
+```
 ### after print job is canceled
+```
 ; disable motors
 M84
 
@@ -75,8 +78,9 @@ M84
 M106 S0
 
 G1 Z100 ; Move bed down
-
+```
 ### after print job is paused
+```
 M300 S92 P250
 M300 S138 P250
 M300 S185 P250
@@ -90,8 +94,10 @@ G1 Y0 ; Move to front position (two moves to avoid risk of running into bed clam
 G91; Relative movement
 G1 E-80 F1000; retract filament into bowden for easier swap
 G90; Absolute position ON
+```
 
 ### before print job is resumed
+```
 G91 ; Relative movement
 G1 E40 F300; Reposition filament (or purge if new filament has been pushed in by hand)
 
@@ -111,3 +117,4 @@ G1 Y50 F3000; Move past the front left clamp to be safe
 G91 ; Relative movement
 G1 Z-30 ; Move bed back (upwards vertically)
 G90 ; Absolute position
+```
