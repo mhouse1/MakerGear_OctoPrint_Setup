@@ -343,16 +343,8 @@ $(function() {
 		self.activated = ko.observable(false);
 		self.userActivation = ko.observable("");
 		self.supportState = ko.pureComputed(function() {
-
-			if (self.registered() === false){
-				return "Register";
-			}
-			else if (self.registered() === true && self.activated() === false){
-				return "Activate";
-			}
-			else{
-				return "Support";
-			}
+			// originally, this required register or activate before support is available
+			return "Support";
 		}, this);
 
 
@@ -819,7 +811,7 @@ $(function() {
 			} else {
 				temperature = targetTemperature;
 			}
-			if (temperature >= 230){
+			if (temperature >= 251){
 				wiggleBedTemp = 110;
 			} else {
 				wiggleBedTemp = 70;
@@ -5557,7 +5549,7 @@ $(function() {
 
 		// Finally, this is the list of selectors for all elements we want this view model to be bound to.
 		// ["#tab_plugin_mgsetup", "#navbar_plugin_mgsetup","#mgsettings","#tab_plugin_mgsetup_maintenance","#tab_plugin_mgsetup_maintenance-cleanup"]
-		["#tab_plugin_mgsetup", "#navbar_plugin_mgsetup","#mgsettings","#tab_plugin_mgsetup_maintenance-cleanup"]
+		["#tab_plugin_mgsetup","#mgsettings","#tab_plugin_mgsetup_maintenance-cleanup"]
 		//["#tab_plugin_mgsetup"]
 	]);
 });

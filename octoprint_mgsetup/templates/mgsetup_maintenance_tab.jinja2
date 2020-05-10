@@ -1248,6 +1248,7 @@ The second run will only update the bed level data:<br><center>
 
 Both "Prepare" buttons will position the printer and start heating the Extruder to the target temperature (220 °C for PLA, 260 °C for ABS).  Once the target temperature has been reached, you can Retract and Extrude filament as needed.
 <center><button  class="btnstay" data-bind="enable: isOperational() && !isPrinting() && loginState.isUser() , click: function() { $root.sendMaintenancePreheat('T0',220) }">{{ _('Prepare at PLA Extruder Temperature') }}</button></center><br><br>
+<center><button  class="btnstay" data-bind="enable: isOperational() && !isPrinting() && loginState.isUser() , click: function() { $root.sendMaintenancePreheat('T0',250) }">{{ _('Prepare at PETG Extruder Temperature') }}</button></center><br><br>
 <center><button  class="btnstay" data-bind="enable: isOperational() && !isPrinting() && loginState.isUser() , click: function() { $root.sendMaintenancePreheat('T0',260) }">{{ _('Prepare at ABS Extruder Temperature') }}</button></center><br><br>
 
 <div class = "fileupload-new thumbnail" style="width:75%; margin:auto; background-color:rgba(200,0,0,0.2);" data-bind="">
@@ -1292,6 +1293,7 @@ Both "Prepare" buttons will position the printer and start heating the Extruder 
 
 Both "Prepare" buttons will position the printer and start heating the Right Extruder to the target temperature (220 °C for PLA, 260 °C for ABS).  Once the target temperature has been reached, you can Retract and Extrude filament as needed.
 <center><button  class="btnstay" data-bind="enable: isOperational() && !isPrinting() && loginState.isUser() , click: function() { $root.sendMaintenancePreheat('T1',220) }">{{ _('Prepare at PLA Extruder Temperature') }}</button></center><br><br>
+<center><button  class="btnstay" data-bind="enable: isOperational() && !isPrinting() && loginState.isUser() , click: function() { $root.sendMaintenancePreheat('T1',250) }">{{ _('Prepare at PETG Extruder Temperature') }}</button></center><br><br>
 <center><button  class="btnstay" data-bind="enable: isOperational() && !isPrinting() && loginState.isUser() , click: function() { $root.sendMaintenancePreheat('T1',260) }">{{ _('Prepare at ABS Extruder Temperature') }}</button></center><br><br>
 
 <div class = "fileupload-new thumbnail" style="width:75%; margin:auto; background-color:rgba(200,0,0,0.2);" data-bind="">

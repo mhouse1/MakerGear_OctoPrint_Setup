@@ -196,7 +196,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 		#		octoprint.settings.Settings.set(dict(appearance=dict(name=["MakerGear "+self.newhost])))
 		#__plugin_settings_overlay__ = dict(appearance=dict(components=dict(order=dict(tab=[MGSetupPlugin().firstTabName]))))
 		if (self._settings.get(["prefixDisplayName"])):
-			octoprint.settings.Settings.set(octoprint.settings.settings(),["appearance", "name"],["MakerGear " +self.newhost])
+			octoprint.settings.Settings.set(octoprint.settings.settings(),["appearance", "name"],["TF " +self.newhost])
 		else:
 			octoprint.settings.Settings.set(octoprint.settings.settings(),["appearance", "name"],[self.newhost])
 		self.activeProfile = (octoprint.settings.Settings.get( octoprint.settings.settings() , ["printerProfiles","default"] ))
@@ -368,7 +368,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 	def get_template_configs(self):
 		self._logger.info("MGSetup get_template_configs triggered.")
 		return [
-			dict(type="navbar", custom_bindings=True),
+			# dict(type="navbar", custom_bindings=True),
 			dict(type="settings", custom_bindings=True),
 			dict(type="tab", template="mgsetup_tab.jinja2", div="tab_plugin_mgsetup"),
 			# dict(type="tab", template="mgsetup_maintenance_tab.jinja2", div="tab_plugin_mgsetup_maintenance", name="MakerGear Maintenance"),
@@ -404,7 +404,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 			printing = False,
 			currentPrintStartTime = 0,
 			currentPrintElapsedTime = 0,
-			prefixDisplayName = True)
+			prefixDisplayName = False)
 
 
 
@@ -464,15 +464,16 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 			#else:
 			#	self._plugin_manager.send_plugin_message("mgsetup", dict(internetConnection = self.internetConnection))
 
-			if (self.activated == False) or (self.registered ==False):
-				if (self.nextReminder <= time.mktime(time.gmtime())) and (self.nextReminder > 0):
-					self._logger.info("nextReminder is in the past and not 0")
-					self._plugin_manager.send_plugin_message("mgsetup", dict(pleaseRemind = True))
-				else:
-					self._logger.info("nextReminder in the future or 0")
-					self._logger.info(str(self.nextReminder))
-					self._logger.info(str(time.mktime(time.gmtime())))
-				return
+			# Deactivated: Dont nag for registration or activation
+			# if (self.activated == False) or (self.registered ==False):
+			# 	if (self.nextReminder <= time.mktime(time.gmtime())) and (self.nextReminder > 0):
+			# 		self._logger.info("nextReminder is in the past and not 0")
+			# 		self._plugin_manager.send_plugin_message("mgsetup", dict(pleaseRemind = True))
+			# 	else:
+			# 		self._logger.info("nextReminder in the future or 0")
+			# 		self._logger.info(str(self.nextReminder))
+			# 		self._logger.info(str(time.mktime(time.gmtime())))
+			# 	return
 
 		if event == Events.PRINT_STARTED:
 			self.printActive = True
@@ -1413,7 +1414,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 		if (self.pluginVersion == "master"):
 			return dict(
 				octoprint_mgsetup=dict(
-					displayName="Makergear Setup",
+					displayName="M3 Printer Setup",
 					displayVersion=self._plugin_version,
 					# version check: github repository
 					type="github_release",
@@ -1428,7 +1429,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 		if (self.pluginVersion == "refactor"):
 			return dict(
 				octoprint_mgsetup=dict(
-					displayName="Makergear Setup",
+					displayName="M3 Printer Setup",
 					displayVersion=self._plugin_version,
 					
 					# version check: github repository
@@ -1462,7 +1463,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 #__plugin_settings_overlay__ = dict(appearance=dict(components=dict(order=dict(tab=[MGSetupPlugin().firstTabName]))))
 #__plugin_settings_overlay__ = dict(server=dict(port=5001))
 
-__plugin_name__ = "MakerGear Setup"
+__plugin_name__ = "M3 Printer Setup"
 
 __plugin_implementation__ = MGSetupPlugin()
 

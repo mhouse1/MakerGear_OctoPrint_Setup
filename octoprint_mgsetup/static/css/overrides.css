@@ -9,18 +9,19 @@ body {
 }
 
 a {
-  color: #FF6E35;
+  color:#ff0000;
   text-decoration: none;
 }
 
 
 .btn{
-  background-color: #FF6E35 ;
+  /* tf color */
+  background-color: #ff0000 ;
   background-image:none;
 
 }
 .btn-primary{
-  background-color: #FF6E35 ;
+  background-color: #ff0000 ;
   background-image:none;
 }
 
@@ -39,7 +40,7 @@ a {
 
 .btn-primary.active, .btn-primary.disabled, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .btn-primary[disabled]{
 
-  background-color: #FF6E35 ;
+  background-color: #ff0000 ;
 
 }
 
@@ -50,7 +51,7 @@ a {
   min-height: 50px;
   padding-right: 20px;
   padding-left: 20px;
-  background-color: #FF6E35 !important;
+  background-color: #ff0000 !important;
   background-image: none !important;
   /*background-image: -moz-linear-gradient(top, #020202, #020202);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#020202), to(#020202));
@@ -84,7 +85,7 @@ a {
 
 
 .navbar-inverse .navbar-inner {
-  background-color: #FF6E35;
+  background-color: #ff0000;
   /*background-image: -moz-linear-gradient(top, #252a30, #252a30);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#252a30), to(#252a30));
   background-image: -webkit-linear-gradient(top, #252a30, #252a30);
@@ -127,7 +128,7 @@ a {
 .nav-tabs li.active > a,
 .nav-tabs li.active > a:hover {
   color: #ffffff;
-  background-color: #FF6E35;
+  background-color: #ff0000;
   border-color: transparent;
 }
 
