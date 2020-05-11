@@ -2144,9 +2144,9 @@ $(function() {
 
 
 		self.maintenanceOperation = ko.observable("home");
-		self.maintenanceTaskPrinterType = ko.observable("");
-		self.maintenanceTaskHardwareRevision = ko.observable("");
-		self.maintenanceTaskHotend = ko.observable("");
+		self.maintenanceTaskPrinterType = ko.observable("SE");
+		self.maintenanceTaskHardwareRevision = ko.observable("R1");
+		self.maintenanceTaskHotend = ko.observable("T0");
 		self.maintenanceTask = ko.observable("");
 		self.shownTask = ko.observable("home");
 		self.taskRadio = ko.observable("home");
@@ -2185,7 +2185,7 @@ $(function() {
 			}
 			if (nextTask === "home"){
 				self.maintenanceOperation("home");
-				self.maintenanceTaskPrinterType("");
+				self.maintenanceTaskPrinterType("SE");
 				self.maintenanceTaskHardwareRevision("");
 				self.maintenanceTaskHotend("");
 				self.maintenanceTask("");

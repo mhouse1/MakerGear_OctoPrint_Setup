@@ -20,6 +20,7 @@ or manually using this URL:
 ## octoprint update
 as of 5/10/20 M3's are still shipped with 3.1.6; I Recommend at minimum octoprint 3.1.12 to support: octofarm for managing multiple printers, and creating backups
 ## change hostname
+```
 The default hostname will be octopi If you only have 1 system on your network, this will probably be fine. Some users will have multiple systems and this will cause a problem with networking.
 
 To change the hostname.
@@ -32,6 +33,29 @@ At the command prompt enter sudo nano /etc/hosts
 Find the line with 127.0.1.1 and octopi
 Replace octopi with exactly the same hostname as you entered into the hostname file. Note: This has to exactly match, so the same CaSE.
 Reboot, using sudo reboot
+```
+### ECDSA host key for 192.168.0.x has changed
+```
+@----WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!-----@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:m0UOJ6WqV/NeIG+LsV2+YDXVYzoqZl5uU9ZT+/pwtqg.
+Please contact your system administrator.
+Add correct host key in /Users/MyName/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /Users/MyName/.ssh/known_hosts:5
+ECDSA host key for 192.168.0.5 has changed and you have requested strict checking.
+Host key verification failed.
+```
+
+This is due to using the same hardware and hostname, you can clean that up by 
+```
+nano ~/.ssh/known_hosts
+```
+delete the line with the ip address, in this case, its the line with 192.168.0.5
+
 
 ## Octoprint > Settings Dialog > GCODE scripts
 modified to support filament change mid print and other preferences
