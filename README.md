@@ -1,4 +1,8 @@
 forked from original on 5/10/2020 12:10pm
+# notes
+something in the plugin is causing the page to require reloading more often than I like and slows down loading, I recommend disabling the plugin when not needed. 
+
+This fork is still experimental, i've added PETG to calibration but havent tested it yet.
 
 # OctoPrint-MGSetup
 This plugin provides general setup and configuration interfaces for control of the MakerGear M3 Single and Independent Dual Extruder printers.
@@ -26,6 +30,9 @@ The default hostname will be octopi If you only have 1 system on your network, t
 To change the hostname.
 
 Log in via SSH (of if you have a screen & keyboard hooked up, use that). The default host is: octopi.local Username: pi Password: raspberry
+on mac terminal you can ssh using command (enter whatever ip your router assigns it or replace with octopi.local):ssh pi@192.168.50.104
+then enter password: raspberry
+
 At the command prompt type sudo nano /etc/hostname
 Change the hostname from octopi to your preferred hostname. Do not leave spaces before or after and I would recommend keeping it all lowercase.
 Ctrl-X and Y to save.
@@ -50,7 +57,7 @@ ECDSA host key for 192.168.0.5 has changed and you have requested strict checkin
 Host key verification failed.
 ```
 
-This is due to using the same hardware and hostname, you can clean that up by 
+This is due to using the same hardware and hostname, you can clean that up by (applies to mac computers)
 ```
 nano ~/.ssh/known_hosts
 ```
@@ -71,7 +78,7 @@ M300 S196 P500
 M300 S233 P100
 M300 S220 P500
 
-;always preheat both at the same time before starting print
+;always preheat both at the same time before starting print; should replace with slicer setting if your able to
 M140 S70; set bed temperature
 ;M190 S70; wait for bed temperature
 M104 S250 T0; set hot end temperature
