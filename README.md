@@ -79,10 +79,8 @@ M300 S233 P100
 M300 S220 P500
 
 ;always preheat both at the same time before starting print; should replace with slicer setting if your able to
-M140 S70; set bed temperature
-;M190 S70; wait for bed temperature
+M140 S80; set bed temperature
 M104 S250 T0; set hot end temperature
-;M109 S250 T0; wait for hot end temperature
 
 G211 S1 ; turn on software endstops
 ```
@@ -99,8 +97,10 @@ M300 S246 P750
 ```
 ### after print job is canceled
 ```
+G211 S1 ; turn on software endstops
+G1 Z30 ; Move bed away (downward vertically)
 ; disable motors
-M84
+M84 ; disable idle timeout
 
 ;disable all heaters
 {% snippet 'disable_hotends' %}
@@ -108,7 +108,10 @@ M84
 ;disable fan
 M106 S0
 
-G1 Z100 ; Move bed down
+M300 S932 P400
+M300 S888 P400
+M300 S830 P400
+M300 S783 P1000
 ```
 ### after print job is paused
 ```
@@ -132,9 +135,8 @@ G90; Absolute position ON
 G91 ; Relative movement
 G1 E40 F300; Reposition filament (or purge if new filament has been pushed in by hand)
 
-; ========alert music before resume=========
 M300 S110 P100
-M300 S130 P100
+M300 S130 P100; ========alert music before resume
 M300 S146 P100
 M300 S164 P100
 M300 S174 P500
@@ -144,7 +146,7 @@ M300 S233 P100
 M300 S220 P500
 
 G90 ; Absolute position
-G1 Y50 F3000; Move past the front left clamp to be safe
+G1 Y50 F600; Move past the front left clamp to be safe
 G91 ; Relative movement
 G1 Z-30 ; Move bed back (upwards vertically)
 G90 ; Absolute position
